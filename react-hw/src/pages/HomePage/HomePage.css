@@ -1,0 +1,23 @@
+.home-page-wrapper {
+  margin-top: 120px; 
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.home-content {
+  max-width: 700px;
+  text-align: center;
+  color: #fff;
+}
+
+.home-title {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.home-text {
+  font-size: 18px;
+  color: #d6d6d6;
+  margin-bottom: 32px;
+}

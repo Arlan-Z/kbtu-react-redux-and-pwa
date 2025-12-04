@@ -1,0 +1,31 @@
+.items-wrapper {
+  margin-top: 120px;
+  padding: 24px;
+  color: white;
+}
+
+.items-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+.search-input {
+  display: block;
+  width: 300px;
+  margin: 0 auto 24px auto;
+  padding: 10px 14px;
+
+  background: #1e1e20;
+  border: 1px solid #3a3a3d;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.items-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}

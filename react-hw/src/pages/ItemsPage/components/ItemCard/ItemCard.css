@@ -1,0 +1,26 @@
+.item-card {
+  background: #2a2a2d;
+  padding: 16px;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  width: 200px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.item-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.details-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #4bc9ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.details-link:hover {
+  color: #7fe5ff;
+}
