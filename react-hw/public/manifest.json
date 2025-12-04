@@ -1,0 +1,20 @@
+{
+  "name": "KBTU React Redux PWA",
+  "short_name": "KBTU PWA",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#22c1c3",
+  "background_color": "#0b1d26",
+  "icons": [
+    {
+      "src": "/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
