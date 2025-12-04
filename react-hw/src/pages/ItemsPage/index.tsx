@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { searchItems, type Character } from "../../services/itemsService";
 
-import Spinner from "../../components/Spinner";
 import ErrorBox from "../../components/ErrorBox";
+import Spinner from "../../components/Spinner";
+import { fetchItems } from "../../features/items/itemsSlice";
+import { type AppDispatch, type RootState } from "../../store";
 import ItemCard from "./components/ItemCard";
 
 import "./ItemsPage.css";
@@ -12,28 +14,14 @@ export default function ItemsPage() {
   const [params, setParams] = useSearchParams();
   const q = params.get("q") ?? "";
 
-  const [items, setItems] = useState<Character[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const dispatch = useDispatch<AppDispatch>();
+  const { list, loadingList, errorList, query } = useSelector(
+    (state: RootState) => state.items
+  );
 
   useEffect(() => {
-    async function load() {
-      try {
-        setLoading(true);
-        setError("");
-
-        const data = await searchItems(q);
-        setItems(data);
-      } catch (err) {
-        setError("Nothing found or API error");
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    load();
-  }, [q]);
+    dispatch(fetchItems(q));
+  }, [dispatch, q]);
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
     setParams({ q: e.target.value });
@@ -47,16 +35,16 @@ export default function ItemsPage() {
         className="search-input"
         type="text"
         placeholder="Search..."
-        value={q}
+        value={query}
         onChange={handleSearchChange}
       />
 
-      {loading && <Spinner />}
-      {error && <ErrorBox message={error} />}
+      {loadingList && <Spinner />}
+      {errorList && <ErrorBox message={errorList} />}
 
-      {!loading && !error && (
+      {!loadingList && !errorList && (
         <div className="items-grid">
-          {items.map((item) => (
+          {list.map((item) => (
             <ItemCard key={item.id} item={item} />
           ))}
         </div>
